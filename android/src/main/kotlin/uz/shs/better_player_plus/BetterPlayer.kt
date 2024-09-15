@@ -735,7 +735,8 @@ internal class BetterPlayer(
 
             trackSelector.setParameters(builder)
             if(language!=null){
-                exoPlayer?.trackSelectionParameters?.buildUpon()?.setPreferredAudioLanguage(language);
+//                exoPlayer?.trackSelectionParameters?.buildUpon()?.setPreferredAudioLanguage(language);
+                trackSelector.buildUponParameters().setPreferredAudioLanguage(language);
             }
         }
     }
