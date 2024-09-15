@@ -723,19 +723,7 @@ internal class BetterPlayer(
     private fun setAudioTrack(rendererIndex: Int, groupIndex: Int, language: String?){
         val mappedTrackInfo = trackSelector.currentMappedTrackInfo
         if (mappedTrackInfo != null) {
-            val builder = trackSelector.parameters.buildUpon()
-                .setRendererDisabled(rendererIndex, false)
-                .addOverride(
-                    TrackSelectionOverride(
-                        mappedTrackInfo.getTrackGroups(rendererIndex).get(groupIndex),
-                        mappedTrackInfo.getTrackGroups(rendererIndex)
-                            .indexOf(mappedTrackInfo.getTrackGroups(rendererIndex).get(groupIndex))
-                    )
-                )
-
-            trackSelector.setParameters(builder)
-
-            if(language!=null){
+             if(language!=null){
                 // Create a new ParametersBuilder
                 val parametersBuilder = trackSelector.buildUponParameters()
 
@@ -744,6 +732,18 @@ internal class BetterPlayer(
 
                 // Apply the new parameters to the TrackSelector
                 trackSelector.setParameters(parametersBuilder)
+            }
+            else{
+                val builder = trackSelector.parameters.buildUpon()
+                    .setRendererDisabled(rendererIndex, false)
+                    .addOverride(
+                        TrackSelectionOverride(
+                            mappedTrackInfo.getTrackGroups(rendererIndex).get(groupIndex),
+                            mappedTrackInfo.getTrackGroups(rendererIndex)
+                                .indexOf(mappedTrackInfo.getTrackGroups(rendererIndex).get(groupIndex))
+                        )
+                    )
+                trackSelector.setParameters(builder)
             }
         }
     }
