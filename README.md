@@ -1,12 +1,9 @@
-# Better Player 2
-[![pub package](https://img.shields.io/pub/v/better_player_2.svg)](https://pub.dartlang.org/packages/better_player_2)
-[![pub package](https://img.shields.io/github/license/nateshmbhat/better_player_2.svg?style=flat)](https://github.com/nateshmbhat/better_player_2)
-[![pub package](https://img.shields.io/badge/platform-flutter-blue.svg)](https://github.com/nateshmbhat/better_player_2)
-
-This player is based on better_player_plus library and contains some bug fixes and will be maintained properly.
+# Better Player Plus
+[![pub package](https://img.shields.io/pub/v/better_player.svg)](https://pub.dartlang.org/packages/better_player)
+[![pub package](https://img.shields.io/github/license/jhomlala/betterplayer.svg?style=flat)](https://github.com/jhomlala/betterplayer)
+[![pub package](https://img.shields.io/badge/platform-flutter-blue.svg)](https://github.com/jhomlala/betterplayer)
+Use [better_player](https://pub.dev/packages/better_player). 
 Advanced video player based on video_player and Chewie. It's solves many typical use cases and it's easy to run.
-
-Better Player 2 uses recent versions of Media3 ExoPlayer on android and AVPlayer on ios
 
 <table>
    <tr>
@@ -66,7 +63,7 @@ Better Player 2 uses recent versions of Media3 ExoPlayer on android and AVPlayer
 </table>
 
 ## Introduction
-This plugin is originally based on [Chewie](https://github.com/brianegan/chewie). Chewie is awesome plugin and works well in many cases. Better Player is a continuation of ideas introduced in Chewie and fixes some common bugs, adds more configuration options and solves typical use cases. 
+This plugin is based on [Chewie](https://github.com/brianegan/chewie). Chewie is awesome plugin and works well in many cases. Better Player is a continuation of ideas introduced in Chewie. Better player fix common bugs, adds more configuration options and solves typical use cases. 
 
 **Features:**  
 ✔️ Fixed common bugs  
@@ -91,9 +88,11 @@ This plugin is originally based on [Chewie](https://github.com/brianegan/chewie)
 ## Documentation
 * [Official documentation](https://jhomlala.github.io/betterplayer/)
 * [Example application](https://github.com/jhomlala/betterplayer/tree/master/example)
-* [API reference](https://pub.dev/documentation/better_player_2/latest/better_player_2/better_player_2-library.html)
+* [API reference](https://pub.dev/documentation/better_player/latest/better_player/better_player-library.html)
 
 
 ## Important information
 This plugin development is in progress. You may encounter breaking changes each version. This plugin is developed part-time for free. If you need
 some feature which is supported by other players available in pub dev, then feel free to create PR. All valuable contributions are welcome!
+
+
