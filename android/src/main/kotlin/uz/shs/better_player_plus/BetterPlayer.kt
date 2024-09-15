@@ -723,6 +723,7 @@ internal class BetterPlayer(
     private fun setAudioTrack(rendererIndex: Int, groupIndex: Int, language: String?){
         if(language!=null){
             exoPlayer?.trackSelectionParameters?.buildUpon()?.setPreferredAudioLanguage(language);
+            return;
         }
 
         val mappedTrackInfo = trackSelector.currentMappedTrackInfo
