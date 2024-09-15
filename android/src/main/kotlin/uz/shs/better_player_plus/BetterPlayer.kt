@@ -734,9 +734,16 @@ internal class BetterPlayer(
                 )
 
             trackSelector.setParameters(builder)
+
             if(language!=null){
-//                exoPlayer?.trackSelectionParameters?.buildUpon()?.setPreferredAudioLanguage(language);
-                trackSelector.buildUponParameters().setPreferredAudioLanguage(language);
+                // Create a new ParametersBuilder
+                val parametersBuilder = trackSelector.buildUponParameters()
+
+                // Set the preferred audio language
+                parametersBuilder.setPreferredAudioLanguage(language)
+
+                // Apply the new parameters to the TrackSelector
+                trackSelector.setParameters(parametersBuilder)
             }
         }
     }
