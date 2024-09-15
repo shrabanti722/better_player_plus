@@ -694,20 +694,21 @@ internal class BetterPlayer(
                     for (groupIndex in 0 until trackGroupArray.length) {
                         val group = trackGroupArray[groupIndex]
                         for (groupElementIndex in 0 until group.length) {
-                            val label = group.getFormat(groupElementIndex).label
+                            val format = group.getFormat(groupElementIndex);
+                            val label = format.label;
                             if (name == label && index == groupIndex) {
-                                setAudioTrack(rendererIndex, groupIndex)
+                                setAudioTrack(rendererIndex, groupIndex, format.language)
                                 return
                             }
 
                             ///Fallback option
                             if (!hasStrangeAudioTrack && hasElementWithoutLabel && index == groupIndex) {
-                                setAudioTrack(rendererIndex, groupIndex)
+                                setAudioTrack(rendererIndex, groupIndex, format.language)
                                 return
                             }
                             ///Fallback option
                             if (hasStrangeAudioTrack && name == label) {
-                                setAudioTrack(rendererIndex, groupIndex)
+                                setAudioTrack(rendererIndex, groupIndex, format.language)
                                 return
                             }
                         }
@@ -719,7 +720,11 @@ internal class BetterPlayer(
         }
     }
 
-    private fun setAudioTrack(rendererIndex: Int, groupIndex: Int) {
+    private fun setAudioTrack(rendererIndex: Int, groupIndex: Int, language: String?){
+        if(language!=null){
+            exoPlayer?.trackSelectionParameters?.buildUpon()?.setPreferredAudioLanguage(language);
+        }
+
         val mappedTrackInfo = trackSelector.currentMappedTrackInfo
         if (mappedTrackInfo != null) {
             val builder = trackSelector.parameters.buildUpon()
