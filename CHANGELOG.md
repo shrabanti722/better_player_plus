@@ -1,8 +1,3 @@
-## 1.0.7
-
-* Updated Media3 version to 1.4.1
-* Added a fix for streaming audio track selection
-
 ## 1.0.6
 
 * package update. 
