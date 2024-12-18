@@ -337,7 +337,9 @@ class BetterPlayerController {
           _isDataSourceAsms(betterPlayerDataSource!)) {
         _betterPlayerAsmsAudioTracks = _response.audios ?? [];
         if (_betterPlayerAsmsAudioTracks?.isNotEmpty == true) {
-          setAudioTrack(_betterPlayerAsmsAudioTracks!.first);
+          setAudioTrack(_betterPlayerAsmsAudioTracks!
+                  .firstWhereOrNull((s) => s.isDefault == true) ??
+              _betterPlayerAsmsAudioTracks!.first);
         }
       }
     }

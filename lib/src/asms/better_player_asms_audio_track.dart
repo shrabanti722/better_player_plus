@@ -18,6 +18,8 @@ class BetterPlayerAsmsAudioTrack {
   ///mimeType of the audio track
   final String? mimeType;
 
+  final bool? isDefault;
+
   BetterPlayerAsmsAudioTrack({
     this.id,
     this.segmentAlignment,
@@ -25,5 +27,6 @@ class BetterPlayerAsmsAudioTrack {
     this.language,
     this.url,
     this.mimeType,
+    this.isDefault,
   });
 }
