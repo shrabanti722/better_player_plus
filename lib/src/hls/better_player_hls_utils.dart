@@ -50,13 +50,13 @@ sealed class BetterPlayerHlsUtils {
         for (final variant in parsedPlaylist.variants) {
           tracks.add(
             BetterPlayerAsmsTrack(
-              '',
+              variant.format.id ?? '',
               variant.format.width,
               variant.format.height,
               variant.format.bitrate,
-              0,
-              '',
-              '',
+              variant.format.frameRate?.toInt() ?? 0,
+              variant.format.codecs ?? '',
+              variant.format.containerMimeType ?? '',
             ),
           );
         }
@@ -154,8 +154,8 @@ sealed class BetterPlayerHlsUtils {
       bool isDefault = false;
 
       if (rendition.format.selectionFlags != null) {
-        isDefault =
-            Util.checkBitPositionIsSet(rendition.format.selectionFlags!, 1);
+        isDefault = Util.checkBitPositionIsSet(
+            rendition.format.selectionFlags!, Util.selectionFlagDefault);
       }
 
       return BetterPlayerAsmsSubtitle(
@@ -166,6 +166,7 @@ sealed class BetterPlayerHlsUtils {
           isSegmented: isSegmented,
           segmentsTime: targetDuration,
           segments: asmsSegments,
+          mimeType: rendition.format.containerMimeType,
           isDefault: isDefault);
     } on Exception catch (exception) {
       BetterPlayerUtils.log('Failed to process subtitles playlist: $exception');
@@ -181,12 +182,17 @@ sealed class BetterPlayerHlsUtils {
     if (parsedPlaylist is HlsMasterPlaylist) {
       for (int index = 0; index < parsedPlaylist.audios.length; index++) {
         final Rendition audio = parsedPlaylist.audios[index];
-        audios.add(BetterPlayerAsmsAudioTrack(
-          id: index,
-          label: audio.name,
-          language: audio.format.language,
-          url: audio.url.toString(),
-        ));
+        audios.add(
+          BetterPlayerAsmsAudioTrack(
+            id: index,
+            label: audio.name,
+            language: audio.format.language,
+            url: audio.url.toString(),
+            mimeType: audio.format.containerMimeType,
+            isDefault: Util.checkBitPositionIsSet(
+                audio.format.selectionFlags!, Util.selectionFlagDefault),
+          ),
+        );
       }
     }
 
