@@ -1206,7 +1206,7 @@ class BetterPlayerController {
   ///Enable or disable audio mixing with other sound within device.
   void setMixWithOthers(bool mixWithOthers) {
     if (videoPlayerController == null) {
-      throw StateError("The data source has not been initialized");
+      throw StateError("The data source has not been initialized and new other change change");
     }
 
     videoPlayerController!.setMixWithOthers(mixWithOthers);
