@@ -12,6 +12,9 @@
 
 - (void)setPlayer:(AVPlayer *)player {
     self.playerLayer.player = player;
+    if (@available(iOS 12.0, *)) {
+        self.playerLayer.preventsDisplaySleepDuringVideoPlayback = false;
+    }
 }
 
 // Override UIView method
