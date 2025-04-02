@@ -31,10 +31,9 @@ AVPictureInPictureController *_pipController;
     ///Fix for loading large videos
     if (@available(iOS 10.0, *)) {
         _player.automaticallyWaitsToMinimizeStalling = false;
-    }
-    if (@available(iOS 12.0, *)) {
         _player.preventsDisplaySleepDuringVideoPlayback = false;
     }
+
     self._observersAdded = false;
     return self;
 }
